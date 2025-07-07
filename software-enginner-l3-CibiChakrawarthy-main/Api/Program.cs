@@ -1,5 +1,6 @@
 using System.Data;
 using Api.Routes;
+using Api.Services;
 using Microsoft.Data.Sqlite;
 
 namespace Api;
@@ -26,6 +27,7 @@ public class Program
         }
 
         builder.Services.AddTransient<IDbConnection>(_ => new SqliteConnection(connStr));
+        builder.Services.AddTransient<IGrossProfitService, GrossProfitService>();
 
         WebApplication app = builder.Build();
 
